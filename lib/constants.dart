@@ -16,3 +16,28 @@ const KNumberTextStyle2 = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.w900,
 );
+
+const KLabelTextLarge = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+
+const KLabelTextTitle = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.bold,
+);
+
+const KResultTextStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+);
+
+const KBMITextStyle = TextStyle(
+  fontSize: 100,
+  fontWeight: FontWeight.bold,
+);
+
+const KBMITextBody = TextStyle(
+  fontSize: 22,
+);

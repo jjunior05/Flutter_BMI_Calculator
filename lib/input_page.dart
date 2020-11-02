@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bmi_calculator/result_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
-
+import 'button_bottom.dart';
 import 'main.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'round_icon_button.dart';
 
 enum Gender { male, female }
 int height = 180;
@@ -160,6 +162,7 @@ class _inputPageState extends State<inputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FloatingActionButton(
+                              heroTag: 'btnWeightMinus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
@@ -172,6 +175,7 @@ class _inputPageState extends State<inputPage> {
                             ),
                             SizedBox(width: 10.0),
                             FloatingActionButton(
+                              heroTag: 'btnWeightPlus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
@@ -205,6 +209,7 @@ class _inputPageState extends State<inputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FloatingActionButton(
+                              heroTag: 'btnAgeMinus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
@@ -218,6 +223,7 @@ class _inputPageState extends State<inputPage> {
                               width: 10.0,
                             ),
                             FloatingActionButton(
+                              heroTag: 'btnAgePlus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
@@ -236,39 +242,15 @@ class _inputPageState extends State<inputPage> {
               ],
             ),
           ),
-          Container(
-            color: KBottomContainerColor,
-            margin: EdgeInsets.only(
-              top: 10.0,
-            ),
-            width: double.infinity,
-            height: KBottomContainerHeight,
+          BottomButton(
+            buttonTitle: "Result",
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResultsPage()));
+            },
           )
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPressed});
-  final IconData icon;
-  final Function onPressed;
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(
-        icon,
-        color: Colors.white,
-      ),
-      onPressed: onPressed,
-      elevation: 0.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
