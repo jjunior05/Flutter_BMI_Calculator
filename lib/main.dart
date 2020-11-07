@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'input_page.dart';
-import 'result_page.dart';
 
 class BmiCalculator extends StatelessWidget {
   @override
@@ -11,7 +10,7 @@ class BmiCalculator extends StatelessWidget {
         primaryColor: Color(0xFF232323),
         scaffoldBackgroundColor: Color(0xFF232323),
       ),
-      home: inputPage(),
+      home: InputPage(),
     );
   }
 }

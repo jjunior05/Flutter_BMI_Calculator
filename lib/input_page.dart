@@ -9,6 +9,7 @@ import 'main.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
 import 'round_icon_button.dart';
+import 'calculator_brain.dart';
 
 enum Gender { male, female }
 int height = 180;
@@ -19,12 +20,12 @@ void main() {
   runApp(BmiCalculator()); //Import input_card
 }
 
-class inputPage extends StatefulWidget {
+class InputPage extends StatefulWidget {
   @override
-  _inputPageState createState() => _inputPageState();
+  _InputPageState createState() => _InputPageState();
 }
 
-class _inputPageState extends State<inputPage> {
+class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   @override
   Widget build(BuildContext context) {
@@ -162,6 +163,7 @@ class _inputPageState extends State<inputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FloatingActionButton(
+                              onPressed: () {},
                               heroTag: 'btnWeightMinus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.minus,
@@ -175,6 +177,7 @@ class _inputPageState extends State<inputPage> {
                             ),
                             SizedBox(width: 10.0),
                             FloatingActionButton(
+                              onPressed: () {},
                               heroTag: 'btnWeightPlus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.plus,
@@ -209,6 +212,7 @@ class _inputPageState extends State<inputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FloatingActionButton(
+                              onPressed: () {},
                               heroTag: 'btnAgeMinus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.minus,
@@ -223,6 +227,7 @@ class _inputPageState extends State<inputPage> {
                               width: 10.0,
                             ),
                             FloatingActionButton(
+                              onPressed: () {},
                               heroTag: 'btnAgePlus',
                               child: RoundIconButton(
                                 icon: FontAwesomeIcons.plus,
@@ -245,8 +250,18 @@ class _inputPageState extends State<inputPage> {
           BottomButton(
             buttonTitle: "Result",
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultsPage()));
+              CalculatorBrain calc =
+                  CalculatorBrain(weight: weight, height: height);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(
+                    bmiResult: calc.calculateBmi(),
+                    resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
+                ),
+              );
             },
           )
         ],
